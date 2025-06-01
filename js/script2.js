@@ -12,7 +12,7 @@ async function initAudio() {
         const ctx = canvas.getContext('2d');
         const counterElement = document.getElementById('clap-counter');
 
-        const CLAP_THRESHOLD = 150;
+        const CLAP_THRESHOLD = 100;
         const CLAP_DELAY = 5000; // 5 segundos entre aplausos
         let clapCount = 0;
         let lastClapTime = 0;
