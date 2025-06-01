@@ -1,20 +1,10 @@
 async function initSpeechRecognition() {
-    // Verificar compatibilidad del navegador
     if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
         alert('Tu navegador no soporta la Web Speech API');
         return;
     }
 
-    // Acceder al micrófono
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-
-    // Silenciar cualquier video de fondo
-    const video = document.querySelector('video');
-    if (video) {
-        video.muted = true;
-    }
-
-    // Configurar el analizador de audio para visualización
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const analyser = audioContext.createAnalyser();
     analyser.fftSize = 1024;
@@ -47,7 +37,6 @@ async function initSpeechRecognition() {
 
     drawWaveform();
 
-    // Configurar reconocimiento de voz
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
     recognition.lang = 'es-ES';
     recognition.continuous = true;
@@ -57,39 +46,45 @@ async function initSpeechRecognition() {
     const statusEl = document.getElementById('status');
 
     recognition.onstart = () => {
-        statusEl.textContent = "Escuchando...";
+        statusEl.textContent = "Escuchando... habla claramente.";
     };
 
-    recognition.onresult = function (event) {
+    recognition.onresult = function(event) {
         const results = event.results[event.results.length - 1];
 
         for (let i = 0; i < results.length; i++) {
             const transcript = results[i].transcript.trim().toLowerCase();
             console.log("Alternativa:", transcript);
 
-            // Detectar palabra clave
-            if (transcript === "bacata" || transcript === "bacatá") {
+            if (transcript.includes("bacata")) {
                 statusEl.textContent = "Detectado: bacata";
-                window.location.href = "https://ohguerreroz.github.io/Bacata/";
+                window.location.href = "s5.html";
                 return;
+            } else if (transcript.includes("bacatá")) {
+                statusEl.textContent = "Detectado: bacata";
+                window.location.href = "https://ohguerreroz.github.io/Bacata";
+                return;
+            }else {
+                statusEl.textContent = "Palabra no reconocida. Recargando...";
+                setTimeout(() => {
+                    location.reload();
+                }, 1500);
             }
         }
 
-        // No hacer nada si no se reconoce la palabra clave
+        statusEl.textContent = "No se reconoció una palabra válida, intenta de nuevo.";
     };
 
-    recognition.onerror = function (event) {
+    recognition.onerror = function(event) {
         console.error("Error en reconocimiento de voz:", event.error);
         statusEl.textContent = "Error: " + event.error;
     };
 
-    recognition.onend = function () {
-        // Reiniciar automáticamente
+    recognition.onend = function() {
         recognition.start();
     };
 
     recognition.start();
 }
 
-// Ejecutar al cargar
 initSpeechRecognition();
