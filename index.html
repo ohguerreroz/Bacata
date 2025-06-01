@@ -9,10 +9,15 @@
 </head>
 <body>
     <main class="flex-grow-1 d-flex justify-content-center align-items-center">
-        <video id="main-video" class="img-fluid shadow-lg rounded" autoplay loop controls>
-            <source src="multimedia/1.mp4" type="video/mp4">
-            Tu navegador no soporta el video.
-        </video>
+        <div class="ratio ratio-16x9 shadow-lg rounded" style="width: 80%;">
+            <iframe 
+                src="https://www.youtube.com/embed/qllmo6cefvE" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
     </main>
 
     <footer class="bg-dark bg-opacity-50 py-3 d-flex justify-content-center align-items-center">
