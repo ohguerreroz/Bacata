@@ -56,11 +56,15 @@ async function initSpeechRecognition() {
             const transcript = results[i].transcript.trim().toLowerCase();
             console.log("Alternativa:", transcript);
 
-            if (transcript.includes("sutatenza")) {
-                statusEl.textContent = "✅ Detectado: sutatenza";
-                window.location.href = "s6.html";
-                detected = true;
-                break;
+            if (transcript.includes("radio")) {
+                statusEl.textContent = "Detectado: radio";
+                window.location.href = "s5.html";
+                return;
+            } else {
+                statusEl.textContent = "Palabra no reconocida. Recargando...";
+                setTimeout(() => {
+                    location.reload();
+                }, 1500);
             }
         }
 
