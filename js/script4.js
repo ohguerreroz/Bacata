@@ -30,32 +30,49 @@ async function initSpeechRecognition() {
             x += sliceWidth;
         }
 
-                ctx.strokeStyle = '#00ff00';
-                ctx.stroke();
-                requestAnimationFrame(drawWaveform);
-        }
+        ctx.strokeStyle = '#00ff00';
+        ctx.stroke();
+        requestAnimationFrame(drawWaveform);
+    }
 
-        drawWaveform();
-
+    drawWaveform();
 
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
     recognition.lang = 'es-ES';
     recognition.continuous = true;
     recognition.interimResults = false;
+    recognition.maxAlternatives = 5;
+
+    const statusEl = document.getElementById('status');
+
+    recognition.onstart = () => {
+        statusEl.textContent = "Escuchando... habla claramente.";
+    };
 
     recognition.onresult = function(event) {
-        const transcript = event.results[event.results.length - 1][0].transcript.trim().toLowerCase();
-        console.log("Escuchado:", transcript);
+        const results = event.results[event.results.length - 1];
 
-        if (transcript.includes("bacata")) {
-            window.location.href = "s5.html";
-        } else if (transcript.includes("inicio")) {
-            window.location.href = "s4.html";
+        for (let i = 0; i < results.length; i++) {
+            const transcript = results[i].transcript.trim().toLowerCase();
+            console.log("Alternativa:", transcript);
+
+            if (transcript.includes("bacata")) {
+                statusEl.textContent = "Detectado: bacata";
+                window.location.href = "s5.html";
+                return;
+            } else if (transcript.includes("inicio")) {
+                statusEl.textContent = "Detectado: inicio";
+                window.location.href = "s4.html";
+                return;
+            }
         }
+
+        statusEl.textContent = "No se reconoció una palabra válida, intenta de nuevo.";
     };
 
     recognition.onerror = function(event) {
         console.error("Error en reconocimiento de voz:", event.error);
+        statusEl.textContent = "Error: " + event.error;
     };
 
     recognition.onend = function() {
