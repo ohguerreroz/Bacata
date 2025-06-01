@@ -57,12 +57,12 @@ async function initSpeechRecognition() {
             console.log("Alternativa:", transcript);
 
             if (transcript.includes("bacata")) {
-                statusEl.textContent = "Detectado: bacatá";
+                statusEl.textContent = "Detectado: bacata";
                 window.location.href = "s5.html";
                 return;
-            } else if (transcript.includes("inicio")) {
+            } else if (transcript.includes("bacatá")) {
                 statusEl.textContent = "Detectado: bacata";
-                window.location.href = "s4.html";
+                window.location.href = "s5.html";
                 return;
             }else {
                 statusEl.textContent = "Palabra no reconocida. Recargando...";
