@@ -58,7 +58,7 @@ async function initAudio() {
 
                     if (clapCount >= 2) {
                         setTimeout(() => {
-                            window.location.href = "s3.html";
+                            window.location.href = "s7.html";
                         }, 500);
                     }
                 }
