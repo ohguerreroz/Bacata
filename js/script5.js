@@ -56,11 +56,15 @@ async function initSpeechRecognition() {
             const transcript = results[i].transcript.trim().toLowerCase();
             console.log("Alternativa:", transcript);
 
-            if (transcript.includes("radio")) {
-                statusEl.textContent = "Detectado: radio";
+            if (transcript.includes("bacata")) {
+                statusEl.textContent = "Detectado: bacata";
                 window.location.href = "s5.html";
                 return;
-            } else {
+            } else if (transcript.includes("bacatá")) {
+                statusEl.textContent = "Detectado: bacata";
+                window.location.href = "s5.html";
+                return;
+            }else {
                 statusEl.textContent = "Palabra no reconocida. Recargando...";
                 setTimeout(() => {
                     location.reload();
