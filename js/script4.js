@@ -62,7 +62,7 @@ async function initSpeechRecognition() {
                 return;
             } else if (transcript.includes("bacatá")) {
                 statusEl.textContent = "Detectado: bacata";
-                window.location.href = "https://ohguerreroz.github.io/Bacata/";
+                window.location.href = "s5.html";
                 return;
             }else {
                 statusEl.textContent = "Palabra no reconocida. Recargando...";
