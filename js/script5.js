@@ -58,7 +58,7 @@ async function initSpeechRecognition() {
 
             if (transcript.includes("sutatenza")) {
                 statusEl.textContent = "Detectado: sutatenza";
-                window.location.href = "s5.html";
+                window.location.href = "index.html";
                 return;
             }else {
                 statusEl.textContent = "Palabra no reconocida. Recargando...";
