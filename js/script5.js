@@ -56,7 +56,7 @@ async function initSpeechRecognition() {
             const transcript = results[i].transcript.trim().toLowerCase();
             console.log("Alternativa:", transcript);
 
-            if (transcript.includes("bacata")) {
+            if (transcript.includes("sutatenza")) {
                 statusEl.textContent = "Detectado: sutatenza";
                 window.location.href = "s5.html";
                 return;
