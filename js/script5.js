@@ -64,11 +64,6 @@ async function initSpeechRecognition() {
                 statusEl.textContent = "Detectado: bacata";
                 window.location.href = "https://ohguerreroz.github.io/Bacata/";
                 return;
-            }else {
-                statusEl.textContent = "Palabra no reconocida. Recargando...";
-                setTimeout(() => {
-                    location.reload();
-                }, 1500);
             }
         }
 
