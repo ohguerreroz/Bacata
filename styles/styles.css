@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('../multimedia/fondo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+video#main-video {
+    width: 90%;
+    height: auto;
+    max-height: 80vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    border-radius: 10px;
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas#waveform {
+    border: 1px solid #fff;
+    width: 90%;
+    max-width: 800px;
+    height: 150px;
+    background-color: #222;
+}
+
+.counter {
+    background-color: black;
+    font-size: 2em;
+    margin: 20px;
+    padding: 20px;
+    color: #00ff00;
+}
+
+.timer {
+    background-color: black;
+    font-size: 2em;
+    margin: 20px;
+    padding: 20px;
+    color: #00ff00;
+}
