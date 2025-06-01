@@ -57,11 +57,11 @@ async function initSpeechRecognition() {
             console.log("Alternativa:", transcript);
 
             if (transcript.includes("bacata")) {
-                statusEl.textContent = "Detectado: bacata";
+                statusEl.textContent = "Detectado: bacatá";
                 window.location.href = "s5.html";
                 return;
             } else if (transcript.includes("inicio")) {
-                statusEl.textContent = "Detectado: inicio";
+                statusEl.textContent = "Detectado: bacata";
                 window.location.href = "s4.html";
                 return;
             }
