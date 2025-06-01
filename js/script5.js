@@ -10,7 +10,7 @@ async function initAudio() {
         const dataArray = new Uint8Array(analyser.frequencyBinCount);
         const canvas = document.getElementById('waveform');
         const ctx = canvas.getContext('2d');
-        const CLAP_THRESHOLD = 150;
+        const CLAP_THRESHOLD = 120;
         let lastClapTime = 0;
 
         function drawWaveform() {
@@ -43,7 +43,7 @@ async function initAudio() {
             const now = Date.now();
 
             if (peak > CLAP_THRESHOLD && now - lastClapTime > 500) {
-                window.location.href = "s1.html";
+                window.location.href = "index.html";
                 lastClapTime = now;
             }
 

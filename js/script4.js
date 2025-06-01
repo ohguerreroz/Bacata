@@ -66,5 +66,3 @@ async function initSpeechRecognition() {
 }
 
 initSpeechRecognition();
-
-

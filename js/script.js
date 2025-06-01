@@ -10,7 +10,7 @@ async function initAudio() {
         const dataArray = new Uint8Array(analyser.frequencyBinCount);
         const canvas = document.getElementById('waveform');
         const ctx = canvas.getContext('2d');
-        const CLAP_THRESHOLD = 100;
+        const CLAP_THRESHOLD = 120;
         let lastClapTime = 0;
 
         function drawWaveform() {
